@@ -72,42 +72,21 @@ export default function ProjectsSection() {
         {/* GRID */}
         <div className="grid grid-cols-12 gap-6">
           {/* ROW 1 */}
-          <ProjectCard
-            {...projects[0]}
-            className="col-span-12 md:col-span-4"
-          />
+          <ProjectCard {...projects[0]} className="col-span-12 md:col-span-4"/>
 
-          <ProjectCard
-            {...projects[1]}
-            className="col-span-12 md:col-span-8"
-          />
+          <ProjectCard {...projects[1]} className="col-span-12 md:col-span-8"/>
 
           {/* ROW 2 */}
-          <ProjectCard
-            {...projects[2]}
-            className="col-span-12 md:col-span-4"
-          />
+          <ProjectCard {...projects[2]} className="col-span-12 md:col-span-4"/>
 
-          <ProjectCard
-            {...projects[3]}
-            className="col-span-12 md:col-span-4"
-          />
+          <ProjectCard {...projects[3]} className="col-span-12 md:col-span-4"/>
 
-          <ProjectCard
-            {...projects[4]}
-            className="col-span-12 md:col-span-4"
-          />
+          <ProjectCard {...projects[4]} className="col-span-12 md:col-span-4"/>
 
           {/* ROW 3 */}
-          <ProjectCard
-            {...projects[5]}
-            className="col-span-12 md:col-span-7"
-          />
+          <ProjectCard {...projects[5]} className="col-span-12 md:col-span-7"/>
 
-          <ProjectCard
-            {...projects[6]}
-            className="col-span-12 md:col-span-5"
-          />
+          <ProjectCard {...projects[6]} className="col-span-12 md:col-span-5"/>
         </div>
       </Container>
     </section>

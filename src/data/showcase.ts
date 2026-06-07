@@ -8,5 +8,5 @@ export const showcase = {
     italic: "Prototyping",
   },
 
-  image: "/images/projects/project-1.jpg",
+  image: "/images/projects/project-1.png",
 };

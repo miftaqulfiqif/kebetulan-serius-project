@@ -1,104 +1,104 @@
-import Link from "next/link";
-import { ArrowUpRight, Phone } from "lucide-react";
+"use client";
 
-import Container from "@/components/ui/Container";
-import Logo from "@/components/ui/Logo";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+
+import Logo from "@/../public/images/company-logo.svg";
+import CallCalling from "@/../public/icons/call-calling.svg";
 
 import { navigationItems } from "@/constants/navigation";
+import ServicesMegaMenu from "../ui/ServiceMegaMenu";
 
 export default function Header() {
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+
+  const toggleMenu = (label: string) => {
+    setActiveMenu((prev) => (prev === label ? null : label));
+  };
+
+  const closeMenu = () => {
+    setActiveMenu(null);
+  };
+
   return (
-    <header className="w-full py-6">
-      <Container>
-        <div
-          className="
-            flex
-            items-center
-            justify-between
-            rounded-[32px]
-            border
-            border-neutral-200
-            bg-white
-            px-8
-            py-5
-            shadow-[0_10px_30px_rgba(0,0,0,0.06)]
-          "
-        >
+    <>
+      <header className="fixed top-0 left-0 right-0 z-[100] bg-white">
+        <div className="mx-3 flex items-center justify-between gap-16 bg-white px-16 py-4">
           {/* LEFT */}
-          <Logo />
+          <div className="flex flex-col items-start justify-center gap-2.5 border-r-2 border-[#CDCDCD] pr-8">
+            <Image
+              src={Logo}
+              alt="Company Logo"
+              className="h-8 w-auto"
+              priority
+            />
+          </div>
 
           {/* CENTER */}
           <nav className="hidden items-center gap-12 lg:flex">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="
-                  group
-                  flex
-                  items-center
-                  gap-2
-                  text-[17px]
-                  font-medium
-                  text-neutral-800
-                  transition-all
-                  duration-300
-                  hover:text-black
-                "
-              >
-                <span>{item.label}</span>
+            {navigationItems.map((item) => {
+              if (item.hasMegaMenu) {
+                const isOpen = activeMenu === item.label;
 
-                {item.hasArrow && (
-                  <div
-                    className="
-                      flex
-                      h-7
-                      w-7
-                      items-center
-                      justify-center
-                      rounded-full
-                      border
-                      border-neutral-200
-                      transition-all
-                      duration-300
-                      group-hover:border-black
-                    "
+                return (
+                  <button
+                    key={item.label}
+                    onClick={() => toggleMenu(item.label)}
+                    className="group flex items-center gap-2 text-[17px] font-medium text-neutral-800 transition-all duration-300 hover:text-black"
                   >
-                    <ArrowUpRight
-                      size={14}
-                      className="rotate-45"
-                    />
-                  </div>
-                )}
-              </Link>
-            ))}
+                    <span>{item.label}</span>
+
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 transition-all duration-300 group-hover:border-black">
+                      <ArrowUpRight
+                        size={14}
+                        className={`transition-transform duration-300 ${
+                          isOpen ? "rotate-180" : "rotate-90"
+                        }`}
+                      />
+                    </div>
+                  </button>
+                );
+              }
+
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className="group flex items-center gap-2 text-[17px] font-medium text-neutral-800 transition-all duration-300 hover:text-black"
+                >
+                  <span>{item.label}</span>
+
+                  {item.hasArrow && (
+                    <div className="flex h-7 w-7 items-center justify-center rounded-full border border-neutral-200 transition-all duration-300 group-hover:border-black">
+                      <ArrowUpRight size={14} className="rotate-90" />
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* RIGHT */}
-          <button
-            className="
-              flex
-              items-center
-              gap-3
-              rounded-full
-              bg-black
-              px-6
-              py-4
-              text-white
-              transition-all
-              duration-300
-              hover:scale-[1.02]
-              hover:bg-neutral-900
-            "
-          >
+          <button className="flex items-center gap-3 rounded-full bg-black px-6 py-4 text-white transition-all duration-300 hover:scale-[1.02] hover:bg-neutral-900">
             <span className="text-[16px] font-medium">
               Contact Us
             </span>
 
-            <Phone size={18} />
+            <Image
+              src={CallCalling}
+              alt="Call Icon"
+              className="h-5 w-auto"
+            />
           </button>
         </div>
-      </Container>
-    </header>
+      </header>
+
+      <ServicesMegaMenu
+        open={activeMenu === "Services"}
+        onClose={closeMenu}
+      />
+    </>
   );
 }

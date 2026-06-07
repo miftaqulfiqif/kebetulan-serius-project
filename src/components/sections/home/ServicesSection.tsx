@@ -7,16 +7,9 @@ import { services } from "@/data/services";
 
 export default function ServicesSection() {
   return (
-    <section className="pb-32 pt-24">
+    <section id="services" className="pb-32 pt-24">
       <Container>
-        <div
-          className="
-            grid
-            gap-20
-            lg:grid-cols-2
-            lg:gap-28
-          "
-        >
+        <div className="grid gap-20 lg:grid-cols-2 lg:gap-28">
           {/* LEFT CONTENT */}
           <div>
             {/* TITLE */}

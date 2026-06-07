@@ -1,22 +1,26 @@
 export const navigationItems = [
   {
     label: "Services",
-    href: "#services",
+    href: "#",
     hasArrow: true,
+    hasMegaMenu: true,
   },
   {
     label: "Solution",
-    href: "#solution",
+    href: "#",
     hasArrow: true,
+    hasMegaMenu: true,
   },
   {
     label: "Products",
-    href: "#products",
+    href: "#",
     hasArrow: true,
+    hasMegaMenu: true,
   },
   {
     label: "Pricing",
     href: "#pricing",
     hasArrow: false,
+    hasMegaMenu: false,
   },
-];
+] as const;

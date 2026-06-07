@@ -49,29 +49,30 @@ export default function TrustedSection() {
           </p>
 
           {/* TECH STACK GRID */}
-          <div
-            className="
-              mt-20
-              grid
-              grid-cols-2
-              gap-x-10
-              gap-y-12
-              md:grid-cols-3
-              lg:grid-cols-5
-            "
-          >
-            {techStacks.map((tech) => (
-              <div
-                key={tech.name}
-                className="flex justify-center"
-              >
+          <div className="mt-20 flex flex-col gap-12">
+            {/* ROW 1 */}
+            <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8">
+              {techStacks.slice(0, 7).map((tech) => (
                 <TechLogo
+                  key={tech.name}
                   icon={tech.icon}
                   name={tech.name}
                   color={tech.color}
                 />
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* ROW 2 */}
+            <div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-8">
+              {techStacks.slice(7).map((tech) => (
+                <TechLogo
+                  key={tech.name}
+                  icon={tech.icon}
+                  name={tech.name}
+                  color={tech.color}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </Container>
