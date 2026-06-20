@@ -2,9 +2,10 @@ import { ArrowUpRight } from "lucide-react";
 
 import Container from "@/components/ui/Container";
 import FooterColumn from "@/components/ui/FooterColumn";
-import Logo from "@/components/ui/Logo";
+import Logo from "@/../public/images/company-logo.svg";
 
 import { footerData } from "@/data/footer";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -25,7 +26,7 @@ export default function Footer() {
             {/* COMPANY */}
             <div>
               {/* LOGO */}
-              <Logo />
+              <Image src={Logo} alt="Company Logo" className="h-10 w-auto" priority />
 
               {/* COMPANY NAME */}
               <h2

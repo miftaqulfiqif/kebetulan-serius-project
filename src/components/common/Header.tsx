@@ -54,7 +54,7 @@ export default function Header() {
                       <ArrowUpRight
                         size={14}
                         className={`transition-transform duration-300 ${
-                          isOpen ? "rotate-180" : "rotate-90"
+                          isOpen ? "rotate-135" : "rotate-90"
                         }`}
                       />
                     </div>
